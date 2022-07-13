@@ -4,24 +4,30 @@ from .models import Plant
 from .forms import WateringForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+
 def home(request):
     return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def plants_index(request):
     plants = Plant.objects.filter(user=request.user)
     return render(request, 'plants/index.html', {'plants':plants})
 
+@login_required
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     watering_form = WateringForm()
     return render(request, 'plants/detail.html', {'plant':plant, 'watering_form': watering_form})
 
+@login_required
 def add_watering(request, plant_id):
     form = WateringForm(request.POST)
     if form.is_valid():
@@ -44,19 +50,19 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-class PlantCreate(CreateView):
+class PlantCreate(LoginRequiredMixin, CreateView):
     model = Plant
-    fields = '__all__'
+    fields = ['name', 'description', 'type', 'difficultyLevel', 'waterFrequency', 'fertilization', 'repotting']
     success_url = '/plants/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class PlantUpdate(UpdateView):
+class PlantUpdate(LoginRequiredMixin, UpdateView):
     model = Plant
     fields = '__all__'
 
-class PlantDelete(DeleteView):
+class PlantDelete(LoginRequiredMixin, DeleteView):
     model = Plant
     success_url = '/plants/'
