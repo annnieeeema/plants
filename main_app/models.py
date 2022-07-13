@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
 
 TYPES = (
     ('W', 'Watering'), 
@@ -14,6 +16,9 @@ class Plant(models.Model):
     type = models.CharField(max_length=50)
     difficultyLevel = models.IntegerField()
     waterFrequency = models.CharField(max_length=100)
+    fertilization = models.CharField(max_length=100)
+    repotting = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

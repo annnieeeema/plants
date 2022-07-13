@@ -11,6 +11,8 @@
     <p>Type: {{ plant.type }}</p>
     <p>Difficulty Level: {{ plant.difficultyLevel }}/10</p>
     <p>Water Frequency: {{ plant.waterFrequency }}</p>
+    <p>Fertilization Frequency: {{ plant.fertilization }}</p>
+    <p>Repotting Frequency: {{ plant.repotting }}</p>
   </div>
   <div class="card-action">
     <a href="{% url 'plants_update' plant.id %}">Edit</a>
