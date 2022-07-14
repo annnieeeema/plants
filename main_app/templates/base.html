@@ -11,16 +11,28 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper blue-grey darken-4">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">Blossom</a>
+              <a href="/" class="left-brand-logo">Blossom &#127797;</a>
             </li>
           </ul>
           <ul class="right">
@@ -40,10 +52,8 @@
     <main class="container">
         {% block content %} {% endblock %}
     </main>
-    <footer class="page-footer">
-      <div class="center">
-        All Rights Reserved, &copy; 2022 Blossom
-      </div>
+    <footer class="page-footer transparent">
+      <div class="center">All Rights Reserved, &copy; 2022 Blossom</div>
     </footer>
   </body>
 </html>

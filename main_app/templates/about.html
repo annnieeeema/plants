@@ -1,5 +1,69 @@
-{% extends 'base.html' %} {% block content %}
-<h1>About Blossom</h1>
-<hr />
-<p>How this works...</p>
-{% endblock %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Blossom</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="about">
+    <header class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper blue-grey darken-4">
+          <ul>
+            <li>
+              <a href="/" class="left-brand-logo">Blossom &#127797;</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'plants_create' %}">Add a Plant</a></li>
+            <li><a href="{% url 'index' %}">View My Plants</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="about-p">
+      <div class="row">
+        <div class="col s6">
+          <h1 class="about-intro">About Blossom</h1>
+          <hr />
+          <h5>Do you find it hard to constantly keep track of what plants you have, when to water them, not to mention when to fertilize or repot them? Here's where our Blossom comes in handy. </h5>
+          <br />
+          <h5>How this works...</h5>
+          <br />
+          <h5>&#127797 this</h5>
+        </div>
+      </div>
+    </main>
+    <footer class="page-footer transparent">
+      <div class="center">All Rights Reserved, &copy; 2022 Blossom</div>
+    </footer>
+  </body>
+</html>
