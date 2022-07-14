@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Plant Details</h1>
+<h1 style="margin-left: 60px; font-family: Georgia, 'Times New Roman', Times, serif;">Plant Details</h1>
 
 <div class="row">
   <div class="col s6">
@@ -14,16 +14,16 @@
     <p>Fertilization Frequency: {{ plant.fertilization }}</p>
     <p>Repotting Frequency: {{ plant.repotting }}</p>
   </div>
-  <div class="card-action">
-    <a href="{% url 'plants_update' plant.id %}">Edit</a>
-    <a href="{% url 'plants_delete' plant.id %}">Delete</a>
+  <div class="card-action green lighten-5">
+    <a href="{% url 'plants_update' plant.id %}" style="color: rgb(13, 113, 58);">Edit</a>
+    <a href="{% url 'plants_delete' plant.id %}" style="color: rgb(13, 113, 58);">Delete</a>
   </div>
 </div>
 </div>
 <div class="col s6">
   <form action="{% url 'add_watering' plant.id %}"method="post">
     {% csrf_token %} {{ watering_form.as_p }}
-    <input type="submit" class="btn" value="Add Type" />
+    <input type="submit" class="btn green" value="Add Type" />
   </form>
   <table class="striped">
     <thead>
